@@ -185,6 +185,23 @@ body.theme-dark .priority-legend{color:#fbbf24}
 #urgentPanel .priority-line,#fieldPanel .priority-line-input{font-size:16px;padding:9px 14px}
 @media(max-width:900px){#urgentPanel .modal,#fieldPanel .modal{width:calc(100vw - 20px) !important}#urgentPanel.panel{padding:10px !important}#urgentPanel .priority-line,#fieldPanel .priority-lines,#fieldPanel .priority-lines{grid-template-rows:repeat(5,44px);min-height:220px}#urgentPanel .priority-card,#fieldPanel .priority-card{min-height:290px}}
 
+
+/* Stack theme + text size next to the date box */
+.top-actions{display:flex;align-items:center;gap:10px;flex:none}
+.top-control-stack{display:flex;flex-direction:column;gap:6px;align-items:stretch;min-width:250px}
+.top-control-stack .top-theme-btn{width:100%;height:34px;padding:7px 10px;border-radius:10px;font-size:13px!important}
+.top-text-control{height:34px;min-width:250px;padding:6px 9px;border-radius:10px;font-size:13px!important;gap:7px;justify-content:space-between;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+.top-text-control input{width:112px!important;height:16px}
+.top-text-control span{min-width:42px!important;font-size:13px!important}
+.toolbar .tool-right{justify-content:center}
+
+/* Top stacked controls/date alignment fix */
+.top-actions .datebox{height:74px;min-height:74px;display:flex;flex-direction:column;justify-content:center;align-self:stretch;padding:8px 16px}
+.top-actions .datebox .label{line-height:1.1}
+.top-actions .datebox .date{line-height:1.15}
+body.theme-dark .top-actions .datebox{background:#161f2a;border-color:#344052;color:#f5f7fb}
+@media(max-width:980px){.top-actions{width:100%;justify-content:flex-end;align-items:flex-start}.top-control-stack{min-width:220px}.top-text-control{min-width:220px}.top-text-control input{width:92px!important}}
+
 @media print{.toolbar,.panel,.addline,.remove,.btn{display:none!important}.topbar{position:static}.time-card,.note-card{box-shadow:none}body{background:#fff}}
 
 /* Strong light-mode live timeline highlight */
@@ -999,13 +1016,37 @@ body.theme-dark #fieldPanel .priority-card[data-priority="endweek"] .priority-li
 .toolbar .text-control input{font-size:14px!important;}
 .toolbar .active-banner{font-size:13px!important;}
 
+
+
+/* Remove thick notebook margin line from Urgent Notes and Field Notes */
+#urgentPanel .priority-line-num,
+#fieldPanel .priority-line-num{
+  border-right:0!important;
+}
+#urgentPanel .priority-card[data-priority="crises"] .priority-lines{background:linear-gradient(180deg,#f8d8f1,#eed0ea)!important}
+#urgentPanel .priority-card[data-priority="urgent"] .priority-lines{background:linear-gradient(180deg,#f6d4bd,#efc2a1)!important}
+#urgentPanel .priority-card[data-priority="norush"] .priority-lines{background:linear-gradient(180deg,#d7edf8,#c3deed)!important}
+#urgentPanel .priority-card[data-priority="endweek"] .priority-lines{background:linear-gradient(180deg,#e0efd1,#d0e4bb)!important}
+#fieldPanel .priority-card[data-priority="crises"] .priority-lines{background:linear-gradient(180deg,#f8fbff,#eaf3ff)!important}
+#fieldPanel .priority-card[data-priority="urgent"] .priority-lines{background:linear-gradient(180deg,#f7fffd,#dcfaf5)!important}
+#fieldPanel .priority-card[data-priority="norush"] .priority-lines{background:linear-gradient(180deg,#fffaf3,#fff0da)!important}
+#fieldPanel .priority-card[data-priority="endweek"] .priority-lines{background:linear-gradient(180deg,#ffffff,#f1f5f9)!important}
+body.theme-dark #urgentPanel .priority-card[data-priority="crises"] .priority-lines{background:linear-gradient(180deg,#9d4edd,#5b21b6)!important}
+body.theme-dark #urgentPanel .priority-card[data-priority="urgent"] .priority-lines{background:linear-gradient(180deg,#fb923c,#c2410c)!important}
+body.theme-dark #urgentPanel .priority-card[data-priority="norush"] .priority-lines{background:linear-gradient(180deg,#38bdf8,#0369a1)!important}
+body.theme-dark #urgentPanel .priority-card[data-priority="endweek"] .priority-lines{background:linear-gradient(180deg,#a3e635,#4d7c0f)!important}
+body.theme-dark #fieldPanel .priority-card[data-priority="crises"] .priority-lines{background:linear-gradient(180deg,#29415f,#1f334c)!important}
+body.theme-dark #fieldPanel .priority-card[data-priority="urgent"] .priority-lines{background:linear-gradient(180deg,#244f50,#1f3c42)!important}
+body.theme-dark #fieldPanel .priority-card[data-priority="norush"] .priority-lines{background:linear-gradient(180deg,#5a3c22,#42311f)!important}
+body.theme-dark #fieldPanel .priority-card[data-priority="endweek"] .priority-lines{background:linear-gradient(180deg,#344252,#273342)!important}
+
 </style>
 </head>
 <body>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <main class="app" id="app">
-<header class="topbar"><div class="brand"><div class="railmark" aria-hidden="true"><svg viewBox="0 0 64 52" role="img"><path class="railbed" d="M19 5h26l13 42H6L19 5Z"/><path class="rail" d="M23 6 10 47"/><path class="rail" d="M41 6 54 47"/><rect class="tiebar" x="23" y="7" width="18" height="4" rx="2"/><rect class="tiebar" x="20" y="16" width="24" height="4" rx="2"/><rect class="tiebar" x="17" y="26" width="30" height="4" rx="2"/><rect class="tiebar" x="13" y="37" width="38" height="5" rx="2.5"/><path d="M32 8v34" stroke="rgba(255,255,255,.38)" stroke-width="2" stroke-linecap="round"/></svg></div><h1>SETTEGAST <span>— DAILY OPERATIONS TIMELINE</span></h1></div><div class="top-actions"><button class="btn light top-theme-btn" id="themeBtn">Dark Version</button><div class="datebox"><div class="label">TODAY</div><div class="date" id="todayText"></div></div></div></header>
-<div class="toolbar"><div class="tool-left"><button class="btn nav-tone split-tone" id="splitBtn">Split Page</button><button class="btn nav-tone add-tone" id="addTimelineBtn">Add Timeline</button><button class="btn nav-tone task-tone" id="defaultsBtn">Task Manager</button><button class="btn nav-tone archive-tone" id="archiveBtn">Archive</button><button class="btn nav-tone conference-tone" id="confToggleBtn">Conference</button><button class="btn nav-tone urgent-tone" id="urgentNotesBtn">Urgent Notes</button><button class="btn nav-tone field-tone" id="fieldNotesBtn">Field Notes</button><button class="btn nav-tone reset-tone" id="resetBtn">Reset Page</button></div><div class="tool-right"><div class="active-banner" id="editingBanner"></div><label class="text-control">Text Size <input type="range" id="textScale" min="85" max="130" step="5" value="100"><span id="textScaleValue">100%</span></label><button class="btn red" onclick="window.print()">Print</button></div></div>
+<header class="topbar"><div class="brand"><div class="railmark" aria-hidden="true"><svg viewBox="0 0 64 52" role="img"><path class="railbed" d="M19 5h26l13 42H6L19 5Z"/><path class="rail" d="M23 6 10 47"/><path class="rail" d="M41 6 54 47"/><rect class="tiebar" x="23" y="7" width="18" height="4" rx="2"/><rect class="tiebar" x="20" y="16" width="24" height="4" rx="2"/><rect class="tiebar" x="17" y="26" width="30" height="4" rx="2"/><rect class="tiebar" x="13" y="37" width="38" height="5" rx="2.5"/><path d="M32 8v34" stroke="rgba(255,255,255,.38)" stroke-width="2" stroke-linecap="round"/></svg></div><h1>SETTEGAST <span>— DAILY OPERATIONS TIMELINE</span></h1></div><div class="top-actions"><div class="top-control-stack"><button class="btn light top-theme-btn" id="themeBtn">Dark Version</button><label class="text-control top-text-control">Text Size <input type="range" id="textScale" min="85" max="130" step="5" value="100"><span id="textScaleValue">100%</span></label></div><div class="datebox"><div class="label">TODAY</div><div class="date" id="todayText"></div></div></div></header>
+<div class="toolbar"><div class="tool-left"><button class="btn nav-tone split-tone" id="splitBtn">Split Page</button><button class="btn nav-tone add-tone" id="addTimelineBtn">Add Timeline</button><button class="btn nav-tone task-tone" id="defaultsBtn">Task Manager</button><button class="btn nav-tone archive-tone" id="archiveBtn">Archive</button><button class="btn nav-tone conference-tone" id="confToggleBtn">Conference</button><button class="btn nav-tone urgent-tone" id="urgentNotesBtn">Urgent Notes</button><button class="btn nav-tone field-tone" id="fieldNotesBtn">Field Notes</button><button class="btn nav-tone reset-tone" id="resetBtn">Reset Page</button></div><div class="tool-right"><div class="active-banner" id="editingBanner"></div></div></div>
 <section class="conference-banner" id="conferenceBanner"></section>
 <section class="board"><div class="main-col"><div class="timeline-wrap"><div id="timeline"></div></div></div><div class="notes-col"><div id="notesTimeline"></div></div></section>
 </main>
@@ -1031,6 +1072,8 @@ const seedBlocks=[
 const defaultCalls=[{name:'UPS Conference Call',start:'07:00',end:'07:30'},{name:'UPRR Conference',start:'08:00',end:'08:30'},{name:'Jeremy Conglobal Conference',start:'09:00',end:'09:30'},{name:'UPRR Conference',start:'16:00',end:'16:30'}];
 const assigneeNames=['Jacob','Dan','Mike','Jarvis','Neal','Jarvis','TM','NA','OTHER'];
 const keys={state:'sdt_state_v6',defaults:'sdt_defaults_v6',notes:'sdt_notes_v6',archives:'sdt_archives_v6',split:'sdt_split_v6',editing:'sdt_editing_v6',theme:'sdt_theme_v6',textScale:'sdt_text_scale_v6',calls:'sdt_calls_v6',confHidden:'sdt_conf_hidden_v6',urgentNotes:'sdt_urgent_notes_v8',fieldNotes:'sdt_field_notes_v1',urgentQuick:'sdt_urgent_quick_v7'};
+if(localStorage.getItem(keys.theme)===null){localStorage.setItem(keys.theme,'dark');}
+
 const clone=x=>JSON.parse(JSON.stringify(x));
 let defaults=JSON.parse(localStorage.getItem(keys.defaults)||'null')||clone(seedBlocks);
 let state=JSON.parse(localStorage.getItem(keys.state)||'null')||defaultsToState(defaults);
